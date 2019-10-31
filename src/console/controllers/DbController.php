@@ -39,13 +39,37 @@ class DbController extends Controller
      *
      * @throws Exception
      */
-    public function actionReset( $accept = false, $tableNames = null, $filter = false )
+    public function actionReset( $accept = 'y', $tableNames = null, $filter = false )
     {
         $this->access($accept);
 
         $texts = DataBase::dropTable( $tableNames, $filter );
 
         foreach ( $texts as $text ) echo "\r\n {$text}";
+    }
+
+    /**
+     * @param string|bool $accept
+     * @param string|null $tableNames
+     * @param boolean $filter
+     *
+     * @throws Exception
+     */
+    public function actionDelete( $accept = false, $tableNames = null, $filter = false )
+    {
+        self::actionReset($accept = false, $tableNames = null, $filter = false);
+    }
+
+    /**
+     * @param string|bool $accept
+     * @param string|null $tableNames
+     * @param boolean $filter
+     *
+     * @throws Exception
+     */
+    public function actionRemove( $accept = false, $tableNames = null, $filter = false )
+    {
+        self::actionReset($accept = false, $tableNames = null, $filter = false);
     }
 
     /**
@@ -86,7 +110,7 @@ class DbController extends Controller
     {
         $this->access($accept);
 
-        $sql = ( $tableName != self::TABLE_MIGRATION )
+        $sql = ( $tableName == self::TABLE_MIGRATION )
             ? "DELETE FROM `migration` ORDER BY `migration`.`apply_time` DESC LIMIT 1 "
             : "DELETE FROM `{$tableName}` ORDER BY `{$tableName}`.`id` DESC LIMIT 1";
 
