@@ -3,18 +3,23 @@
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
     <h1 align="center">Yii 2 DB</h1>
-    Вспомогательные контроллер + модель для обращений в BD
-    <hr>
 </p>
 
-composer.json  
+Вспомогательные контроллер + модель для обращений в BD.   
+***Задача :*** быстро очищать/удалять таблицы из консоли.
+<hr>
 
+##### INSTALL
+Добавить в `composer.json`  
+<small>require:</small>  
 ```
 "require": {
     ...
     "andy87/yiisoft-common-db" : "1.0.1"
 },
-...
+```  
+<small>repositories</small>  
+```
 "repositories": [
     ...,
     {
@@ -37,17 +42,28 @@ composer.json
     }
 ]
 ```
+выполнить: `php composer.phar update`
 
+Создать файл `console/controllers/DbControllers.php`
+```
+<?php
+
+namespace console\controllers;
+
+class DbController extends \andy87\yii2\db\console\controllers\DbController
+{
+    // ...
+}
+```
+  
 <br>
-
+  
 ### Консольные команды
 
  `php yii db/tables`  
 Вывести имена всех таблиц
 
-
-
-#####Методы требующие подтверждения
+##### Методы требующие подтверждения
 -confirm  = -y|-yes
 
  `php yii db/reset $confirm $tableNames $filter`  
@@ -66,10 +82,12 @@ composer.json
  `php yii db/revert $name`  
 Удалить последнюю строку в таблице `name`
 <small> alias db/clear </small>
-
+  
+<br>
+  
 ### Методы модели  
 
-#####DataBase  
+##### DataBase  
  `getDataBaseName()` - возвращает имя базы данных текущей BD  
  `getAllTables()` - возвращает массив имён таблиц из текущей BD  
 
@@ -80,9 +98,11 @@ composer.json
  `truncateTable( $tableNames, $filter )`  
  - Очистить все таблицы по условию ***$tableNames***  
  - при ***$filter = true*** очистятся все таблицы кроме $filter  
- 
- Вспомогательные методы:  
- `argumentTables( $tableNames )`  
+  
+<br>
+  
+### Вспомогательные методы:  
+ `argumentTables( $tableNames, $filter )`  
  <small>**$tableNames** = **string|null**</small>  
  возвращает массив имён таблиц из текущей BD по условию:  
     Если $tableNames = string и:    
@@ -91,8 +111,9 @@ composer.json
 - не содержет `,` то  вернёт `[ 'user' ]`   
 <small>**при $tableNames == 'user'**</small> 
 
-    Если ***$tableNames = null*** вернёт список всех таблиц
-    
- `query( $sql )` - выполнить запрос `$sql` и не возвращать ответ  
- `queryScalar()` - выполнить запрос `$sql` и вернуть **Scalar** ответ  
- `queryColumn()` - выполнить запрос `$sql` и вернуть **Column** ответ  
+Если ***$tableNames = null*** вернёт список всех таблиц  
+Если ***$filter = true*** вернётся список всех таблиц кроме тех что будут в ***$tableNames***  
+<br>
+ `query( $sql )` - выполнит `$sql` запрос и не возвращать ответ (true|false)  
+ `queryScalar( $sql )` - выполнит `$sql` запрос и вернёт стандартный ответ **Scalar**  (string|integer)  
+ `queryColumn( $sql )` - выполнит `$sql` запрос и вернет стандартный ответ **Column**  (Array)  
