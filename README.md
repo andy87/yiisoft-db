@@ -40,30 +40,36 @@ composer.json
 #####Методы требующие подтверждения
 -confirm  = -y|-yes
 
- `php yii db/reset -confirm`  
+ `php yii db/reset $confirm $tableNames $filter`  
 Удалить все таблицы
   
   
- `php yii db/clear -confirm`  
+ `php yii db/clear $confirm $tableNames $filter`  
 Очистить все таблицы  
   
   
- `php yii db/truncate -confirm`  
+ `php yii db/truncate $confirm $tableNames $filter`  
 Очистить все таблицы   
 <small> alias db/clear </small>  
 
   
- `php yii db/revert -name`  
+ `php yii db/revert $name`  
 Удалить последнюю строку в таблице `name`
 <small> alias db/clear </small>
 
-### Методы модели 
+### Методы модели  
 
 #####DataBase  
  `getDataBaseName()` - возвращает имя базы данных текущей BD  
- `getAllTables()` - возвращает массив имён таблиц из текущей BD   
- `dropTable( $tableNames )`   - Удалить все таблицы ***$tableNames***  
- `truncateTable( $tableNames )` - Очистить все таблицы по условию ***$tableNames***  
+ `getAllTables()` - возвращает массив имён таблиц из текущей BD  
+
+ `dropTable( $tableNames, $filter )`  
+ - Удалить все таблицы ***$tableNames***  
+ - при ***$filter = true*** удалятся все таблицы кроме $filter  
+
+ `truncateTable( $tableNames, $filter )`  
+ - Очистить все таблицы по условию ***$tableNames***  
+ - при ***$filter = true*** очистятся все таблицы кроме $filter  
  
  Вспомогательные методы:  
  `argumentTables( $tableNames )`  
