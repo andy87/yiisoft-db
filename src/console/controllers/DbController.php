@@ -36,6 +36,8 @@ class DbController extends Controller
      * @param string|bool $accept
      * @param string|null $tableNames
      * @param boolean $filter
+     *
+     * @throws Exception
      */
     public function actionReset( $accept = false, $tableNames = null, $filter = false )
     {
@@ -50,6 +52,8 @@ class DbController extends Controller
      * @param string|bool $accept
      * @param string|null $tableNames
      * @param boolean $filter
+     *
+     * @throws Exception
      */
     public function actionTruncate( $accept = false, $tableNames = null, $filter = false )
     {
@@ -64,6 +68,8 @@ class DbController extends Controller
      * @param string|bool $accept
      * @param string|null $tableNames
      * @param boolean $filter
+     *
+     * @throws Exception
      */
     public function actionClear( $accept = false, $tableNames = null, $filter = false )
     {
@@ -73,6 +79,8 @@ class DbController extends Controller
     /**
      * @param string|bool $accept
      * @param string $tableName
+     *
+     * @throws Exception
      */
     public function actionRevert( $accept = false, $tableName = self::TABLE_MIGRATION )
     {
