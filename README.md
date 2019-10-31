@@ -9,22 +9,30 @@
 composer.json  
 
 ```
-{
-    "type"                  : "package",
-    "package"               : {
-        "name"                  : "andy87/yiisoft-common-db",
-        "version"               : "1.0.1",
-        "source"                : {
-            "type"                  : "git",
-            "reference"             : "master",
-            "url"                   : "https://github.com/andy87/yiisoft-common-db"
-        },
-        "autoload": {
-            "classmap": ["src/"],
-            "files": ["mapper.php"]
+"require": {
+    ...
+    "andy87/yiisoft-common-db" : "1.0.1"
+},
+...
+"repositories": [
+    ...,
+    {
+        "type"                  : "package",
+        "package"               : {
+            "name"                  : "andy87/yiisoft-common-db",
+            "version"               : "1.0.1",
+            "source"                : {
+                "type"                  : "git",
+                "reference"             : "master",
+                "url"                   : "https://github.com/andy87/yiisoft-common-db"
+            },
+            "autoload": {
+                "classmap": ["src/"],
+                "files": ["mapper.php"]
+            }
         }
     }
-}
+]
 ```
 <hr>
 
