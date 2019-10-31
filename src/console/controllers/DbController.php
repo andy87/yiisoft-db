@@ -1,11 +1,11 @@
 <?php
 
-namespace andy87\yii2\console\controllers;
+namespace andy87\yii2\db\console\controllers;
 
 use yii\db\Exception;
 use yii\console\Controller;
 
-use andy87\yii2\common\models\DataBase;
+use andy87\yii2\db\common\models\DataBase;
 
 /**
  * Class DbController

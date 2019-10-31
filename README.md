@@ -27,8 +27,10 @@ composer.json
                 "url"                   : "https://github.com/andy87/yiisoft-common-db"
             },
             "autoload": {
-                "classmap": ["src/"],
-                "files": ["mapper.php"]
+                "psr-4": {
+                    "andy87\\yii2\\db\\console\\controllers\\": "src/console/controllers",
+                    "andy87\\yii2\\db\\common\\models\\": "src/common/models"
+                }
             }
         }
     }

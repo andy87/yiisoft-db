@@ -1,6 +1,6 @@
 <?php
 
-namespace andy87\yii2\common\models;
+namespace andy87\yii2\db\common\models;
 
 use Yii;
 use yii\base\Model;
