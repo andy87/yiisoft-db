@@ -19,7 +19,7 @@ class DbController extends Controller
 
     public $accept          = ['y', 'yes'];
 
-    public $accessErr       = 'Нужно подтверждение: -y';
+    public $accessErr       = 'Нужно подтверждение: y';
 
 
     /**
