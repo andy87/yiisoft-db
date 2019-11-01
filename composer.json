@@ -1,5 +1,5 @@
 {
-  "name"        : "Console-BD",
+  "name"        : "BD",
   "description" : "Remember `composer clearcache`",
   "version"     : "1.0.1",
   "require"     : {
@@ -8,7 +8,7 @@
   "repositories": [
     {
       "type"      : "vcs",
-      "url"       : "https://github.com/andy87/yiisoft-common-db"
+      "url"       : "https://github.com/andy87/yiisoft-db"
     }
   ]
 }

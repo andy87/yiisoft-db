@@ -15,7 +15,7 @@
 ```
 "require": {
     ...
-    "andy87/yiisoft-common-db" : "1.0.1"
+    "andy87/yiisoft-db" : "1.0.1"
 },
 ```  
 <small>repositories</small>  
@@ -25,12 +25,12 @@
     {
         "type"                  : "package",
         "package"               : {
-            "name"                  : "andy87/yiisoft-common-db",
+            "name"                  : "andy87/yiisoft-db",
             "version"               : "1.0.1",
             "source"                : {
                 "type"                  : "git",
                 "reference"             : "master",
-                "url"                   : "https://github.com/andy87/yiisoft-common-db"
+                "url"                   : "https://github.com/andy87/yiisoft-db"
             },
             "autoload": {
                 "psr-4": {
