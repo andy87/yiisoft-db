@@ -55,7 +55,7 @@ SQL;
 
         foreach ( $tableNames as $tableName )
         {
-            $count  = self::queryScalar( "SELECT count(`id`) FROM `$tableName`" );
+            $count  = self::queryScalar( "SELECT count(*) FROM `$tableName`" );
             $resp[ $tableName ] = $count;
         }
 
