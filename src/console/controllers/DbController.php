@@ -33,6 +33,20 @@ class DbController extends Controller
     }
 
     /**
+     * @param null|string $tableNames
+     * @param bool $filter
+     */
+    public function actionTablesCount( $tableNames = null, $filter = false )
+    {
+        $data = DataBase::getTablesCount( $tableNames, $filter );
+
+        foreach ( $data as $tableName => $count )
+        {
+            echo "\r\n {$tableName} : {$count}";
+        }
+    }
+
+    /**
      * @param string|bool $accept
      * @param string|null $tableNames
      * @param boolean $filter

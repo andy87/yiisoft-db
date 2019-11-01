@@ -45,6 +45,26 @@ SQL;
     /**
      * @param null|string $tableName
      * @param bool $filter
+     * @return array
+     */
+    public static function getTablesCount( $tableName = null, $filter = false )
+    {
+        $tableNames = self::argumentTables( $tableName, $filter );
+
+        $resp = [];
+
+        foreach ( $tableNames as $tableName )
+        {
+            $count  = self::queryScalar( "SELECT count(`id`) FROM `$tableName`" );
+            $resp[ $tableName ] = $count;
+        }
+
+        return $resp;
+    }
+
+    /**
+     * @param null|string $tableName
+     * @param bool $filter
      *
      * @return array
      *
