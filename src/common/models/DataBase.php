@@ -19,7 +19,7 @@ class DataBase extends Model
      *
      * @throws Exception
      */
-    public static function getDataBaseName()
+    public static function getDataBaseName ()
     {
         $database = self::queryScalar( "SELECT DATABASE()" );
 
@@ -31,10 +31,10 @@ class DataBase extends Model
      *
      * @throws Exception
      */
-    public static function getAllTables()
+    public static function getAllTables ()
     {
-        $database   = self::getDataBaseName();
-        $sql        = <<<SQL
+        $database = self::getDataBaseName();
+        $sql = <<<SQL
     SELECT `table_name` FROM `information_schema`.`tables` WHERE `table_schema` = '{$database}'
 SQL;
         $tables = self::queryColumn( $sql );
@@ -47,15 +47,14 @@ SQL;
      * @param bool $filter
      * @return array
      */
-    public static function getTablesCount( $tableName = null, $filter = false )
+    public static function getTablesCount ( $tableName = NULL, $filter = false )
     {
         $tableNames = self::argumentTables( $tableName, $filter );
 
         $resp = [];
 
-        foreach ( $tableNames as $tableName )
-        {
-            $count  = self::queryScalar( "SELECT count(*) FROM `$tableName`" );
+        foreach ( $tableNames as $tableName ) {
+            $count = self::queryScalar( "SELECT count(*) FROM `$tableName`" );
             $resp[ $tableName ] = $count;
         }
 
@@ -70,14 +69,13 @@ SQL;
      *
      * @throws Exception
      */
-    public static function  dropTable( $tableName = null, $filter = false )
+    public static function dropTable( $tableName = NULL, $filter = false )
     {
-        $resp       = [];
+        $resp = [];
 
         $tableNames = self::argumentTables( $tableName, $filter );
 
-        foreach ( $tableNames as $tableName )
-        {
+        foreach ( $tableNames as $tableName ) {
             $sql = "DROP TABLE `{$tableName}`";
 
             $resp[] = ( self::query( $sql ) )
@@ -86,6 +84,32 @@ SQL;
         }
 
         return $resp;
+    }
+
+    /**
+     * @param null|string $tableName
+     * @param bool $filter
+     *
+     * @return array
+     *
+     * @throws Exception
+     */
+    public static function deleteTable( $tableName = NULL, $filter = false )
+    {
+        return self::dropTable( $tableName, $filter );
+    }
+
+    /**
+     * @param null|string $tableName
+     * @param bool $filter
+     *
+     * @return array
+     *
+     * @throws Exception
+     */
+    public static function removeTable( $tableName = NULL, $filter = false )
+    {
+        return self::dropTable( $tableName, $filter );
     }
 
     /**
