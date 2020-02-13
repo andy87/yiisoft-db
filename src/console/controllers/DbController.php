@@ -143,4 +143,23 @@ class DbController extends Controller
             exit( $this->accessErr );
         }
     }
+    
+    
+    public function actionDrop()
+    {
+        try {
+
+            $tables = DataBase::getAllTables();
+
+            $tables = '`' . implode($tables, '`,  `') . '`';
+
+            $SLQ    = "DROP TABLE {$tables}";
+
+            \Yii::$app->db->createCommand($SLQ)->execute();
+
+        } catch (Exception $e) {
+
+            echo "\r\n Drop error: " . $e->getMessage();
+        }
+    }
 }
