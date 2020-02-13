@@ -82,6 +82,10 @@ class DbController extends \andy87\yii2\db\console\controllers\DbController
  `php yii db/revert $name`  
 Удалить последнюю строку в таблице `name`
 <small> alias db/clear </small>
+
+ `php yii db/drop`  
+Удалить все таблицы в Базе
+
   
 <br>
   
